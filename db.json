@@ -1,0 +1,84 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstname": "Hari Sharan",
+      "lastname": "Chaulagain",
+      "email": "hari@hari.com",
+      "password": "123456",
+      "confirmpassword": "123456"
+    },
+    {
+      "id": 2,
+      "firstname": "Bibek",
+      "lastname": "Thapa",
+      "email": "thapa@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456"
+    },
+    {
+      "firstname": "Sita",
+      "lastname": "sita",
+      "email": "sita@gmail.com",
+      "password": "000000",
+      "confirmpassword": "000000",
+      "id": 4
+    },
+    {
+      "firstname": "Ramesh",
+      "lastname": "ramesh",
+      "email": "ramesh@gmail.com",
+      "password": "ramesh",
+      "confirmpassword": "ramesh",
+      "id": 5
+    },
+    {
+      "firstname": "Saroj",
+      "lastname": "Tamang",
+      "email": "saroj@gmail.com",
+      "password": "999999",
+      "confirmpassword": "999999",
+      "id": 6
+    },
+    {
+      "firstname": "Nischal",
+      "lastname": "Bade",
+      "email": "nischal@niscal.com",
+      "password": "nischal",
+      "confirmpassword": "nischal",
+      "id": 7
+    },
+    {
+      "firstname": "Ramit",
+      "lastname": "KC",
+      "email": "ramit@gmail.com",
+      "password": "888888",
+      "confirmpassword": "888888",
+      "id": 8
+    },
+    {
+      "firstname": "ksajdfa",
+      "lastname": "dsndsd",
+      "email": "sdnfjk@gasdk.com",
+      "password": "mamama",
+      "confirmpassword": "mamama",
+      "id": 9
+    },
+    {
+      "firstname": "aokreds",
+      "lastname": "dkasfd",
+      "email": "jierdk@dksl.com",
+      "password": "kkkkkk",
+      "confirmpassword": "kkkkkk",
+      "id": 10
+    },
+    {
+      "firstname": "asjdnvm",
+      "lastname": "asjdams",
+      "email": "idjks@ksdafd.com",
+      "password": "kakaka",
+      "confirmpassword": "kakaka",
+      "id": 11
+    }
+  ]
+}
