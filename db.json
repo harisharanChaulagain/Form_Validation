@@ -1,84 +1,36 @@
 {
   "users": [
     {
-      "id": 1,
-      "firstname": "Hari Sharan",
-      "lastname": "Chaulagain",
-      "email": "hari@hari.com",
-      "password": "123456",
-      "confirmpassword": "123456"
-    },
-    {
-      "id": 2,
-      "firstname": "Bibek",
-      "lastname": "Thapa",
-      "email": "thapa@gmail.com",
-      "password": "123456",
-      "confirmpassword": "123456"
-    },
-    {
-      "firstname": "Sita",
-      "lastname": "sita",
-      "email": "sita@gmail.com",
-      "password": "000000",
-      "confirmpassword": "000000",
+      "firstname": "ramesh",
+      "lastname": "thapa",
+      "email": "tamesh@ramesh.co",
+      "password": "909090",
+      "confirmpassword": "909090",
       "id": 4
     },
     {
-      "firstname": "Ramesh",
-      "lastname": "ramesh",
-      "email": "ramesh@gmail.com",
-      "password": "ramesh",
-      "confirmpassword": "ramesh",
+      "firstname": "hari",
+      "lastname": "chaulagain",
+      "email": "hari@gmail.com",
+      "password": "hari12",
+      "confirmpassword": "hari12",
       "id": 5
     },
     {
-      "firstname": "Saroj",
-      "lastname": "Tamang",
-      "email": "saroj@gmail.com",
-      "password": "999999",
-      "confirmpassword": "999999",
+      "firstname": "manoj",
+      "lastname": "chaulagain",
+      "email": "manoj12@gmail.com",
+      "password": "121212",
+      "confirmpassword": "121212",
       "id": 6
     },
     {
-      "firstname": "Nischal",
-      "lastname": "Bade",
-      "email": "nischal@niscal.com",
-      "password": "nischal",
-      "confirmpassword": "nischal",
-      "id": 7
-    },
-    {
       "firstname": "Ramit",
-      "lastname": "KC",
+      "lastname": "K.C.",
       "email": "ramit@gmail.com",
-      "password": "888888",
-      "confirmpassword": "888888",
-      "id": 8
-    },
-    {
-      "firstname": "ksajdfa",
-      "lastname": "dsndsd",
-      "email": "sdnfjk@gasdk.com",
-      "password": "mamama",
-      "confirmpassword": "mamama",
-      "id": 9
-    },
-    {
-      "firstname": "aokreds",
-      "lastname": "dkasfd",
-      "email": "jierdk@dksl.com",
-      "password": "kkkkkk",
-      "confirmpassword": "kkkkkk",
-      "id": 10
-    },
-    {
-      "firstname": "asjdnvm",
-      "lastname": "asjdams",
-      "email": "idjks@ksdafd.com",
-      "password": "kakaka",
-      "confirmpassword": "kakaka",
-      "id": 11
+      "password": "ramit1",
+      "confirmpassword": "ramit1",
+      "id": 7
     }
   ]
 }

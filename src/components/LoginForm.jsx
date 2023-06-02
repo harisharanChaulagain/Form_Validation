@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import { signUpSchema } from "../schemas/index";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const initialValues = {
   email: "",
@@ -10,12 +10,29 @@ const initialValues = {
 };
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+  
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
       validationSchema: signUpSchema,
       onSubmit: (values, action) => {
         console.log(values);
+        axios.post("http://localhost:8000/users",{
+          email,
+          password
+        }).then((req,response) => {
+          users.find(
+            {email: req.body.email, userId: req.body.userId}
+          )
+          const data = response.data;
+          if(!data){
+            console.warn("Not a user.")
+          }else{
+            console.log("Successfully Login");
+            navigate("/newpage")
+          }
+        })
       },
     });
 

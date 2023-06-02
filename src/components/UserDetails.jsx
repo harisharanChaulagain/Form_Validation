@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import { BiEdit } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const UserDetails = () => {
   const [userData, setUserData] = useState([]);
+  const [editUserDetails, setEditUserDetails] = useState();
 
   const handleDeleteUser = (userId) => {
     axios
@@ -17,6 +19,11 @@ const UserDetails = () => {
       .catch((error) => {
         console.warn(error);
       });
+  };
+
+  const handleEditUser = (userId) => {
+    setEditUserDetails(userId);
+    window.location.href = `/edit-user/${userId}`;
   };
 
   useEffect(() => {
@@ -32,7 +39,10 @@ const UserDetails = () => {
   }, []);
 
   return (
-    <div className="bg-white mx-auto mt-16 rounded shadow-2xl" style={{ width: "650px" }}>
+    <div
+      className="bg-white mx-auto mt-16 rounded shadow-2xl"
+      style={{ width: "650px" }}
+    >
       <h1 className="font-bold text-2xl">List of Users</h1>
       <hr className="my-4" />
       <table className="w-full">
@@ -55,7 +65,12 @@ const UserDetails = () => {
                   className="text-red-500 cursor-pointer hover:text-red-600 hover:scale-105"
                   onClick={() => handleDeleteUser(user.id)}
                 />
-                <BiEdit className="text-orange-500 cursor-pointer hover:text-orange-600 hover:scale-105" />
+                <Link to={`/edit-user/${user.id}`}>
+                  <BiEdit
+                    className="text-orange-500 cursor-pointer hover:text-orange-600 hover:scale-105"
+                    onClick={() => handleEditUser(user.id)}
+                  />
+                </Link>
               </td>
             </tr>
           ))}
