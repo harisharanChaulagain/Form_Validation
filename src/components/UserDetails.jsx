@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const UserDetails = () => {
   const [userData, setUserData] = useState([]);
   const [editUserDetails, setEditUserDetails] = useState();
+  const [selected, setSelected] = useState(null);
 
   const handleDeleteUser = (userId) => {
     axios
@@ -15,6 +16,7 @@ const UserDetails = () => {
         console.log(response);
         const updatedUserData = userData.filter((user) => user.id !== userId);
         setUserData(updatedUserData);
+        setSelected(null);
       })
       .catch((error) => {
         console.warn(error);
@@ -37,6 +39,16 @@ const UserDetails = () => {
         console.warn("Error:", error);
       });
   }, []);
+
+  // delete confirm
+  const handleDeleteView = (user) => {
+    setSelected(user.id);
+  };
+
+  // cancel
+  const handleDeleteCancle = () => {
+    setSelected(null);
+  };
 
   return (
     <div
@@ -63,7 +75,8 @@ const UserDetails = () => {
               <td className="flex flex-row gap-3 text-2xl">
                 <MdDelete
                   className="text-red-500 cursor-pointer hover:text-red-600 hover:scale-105"
-                  onClick={() => handleDeleteUser(user.id)}
+                  // onClick={() => handleDeleteUser(user.id)}
+                  onClick={() => handleDeleteView(user)}
                 />
                 <Link to={`/edit-user/${user.id}`}>
                   <BiEdit
@@ -76,6 +89,31 @@ const UserDetails = () => {
           ))}
         </tbody>
       </table>
+      {selected && (
+        <div className="bg-slate-200 inset-0"
+        style={{height:"150px", width:"400px"}}>
+          <div>
+          <h1 className="font-bold text-2xl">Are You Sure ?</h1>
+          <p>You won't be able to revert this!</p>
+          </div>
+          <div>
+            <button
+              className="font-bold text-white bg-blue-500 p-2 rounded ml-6 mt-3 hover:bg-blue-600"
+              style={{ width: "140px" }}
+              onClick={() => handleDeleteUser(selected)}
+            >
+              Yes, delete it
+            </button>
+            <button
+              className="font-bold text-white bg-red-500 hover:bg-red-600 rounded p-2 mt-3"
+              style={{ width: "140px" }}
+              onClick={handleDeleteCancle}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

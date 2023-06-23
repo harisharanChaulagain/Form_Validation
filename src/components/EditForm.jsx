@@ -50,7 +50,6 @@ const EditForm = () => {
       .then((response) => {
         const edituserData = response.data;
         setEditUserData(edituserData);
-        console.log("Data to edit:", editUserData.firstname);
         setFieldValue("firstname", edituserData.firstname);
         setFieldValue("lastname", edituserData.lastname);
         setFieldValue("email", edituserData.email);
