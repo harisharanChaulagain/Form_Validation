@@ -8,6 +8,7 @@ const UserDetails = () => {
   const [userData, setUserData] = useState([]);
   const [editUserDetails, setEditUserDetails] = useState();
   const [selected, setSelected] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleDeleteUser = (userId) => {
     axios
@@ -50,12 +51,27 @@ const UserDetails = () => {
     setSelected(null);
   };
 
+  // filter data
+  const filteredData = userData.filter((user) =>
+    user.email.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  const tableData = searchQuery ? filteredData : userData;
+
   return (
     <div
       className="bg-white mx-auto mt-16 rounded shadow-2xl"
       style={{ width: "650px" }}
     >
-      <h1 className="font-bold text-2xl">List of Users</h1>
+      <div className="flex m-2 p-2 justify-between">
+        <h1 className="font-bold text-2xl">List of Users</h1>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="bg-slate-200 rounded-sm p-2"
+          placeholder="Search here"
+        />
+      </div>
       <hr className="my-4" />
       <table className="w-full">
         <thead>
@@ -67,7 +83,7 @@ const UserDetails = () => {
           </tr>
         </thead>
         <tbody>
-          {userData.map((user) => (
+          {tableData.map((user) => (
             <tr key={user.id}>
               <td className="p-2">{user.firstname}</td>
               <td className="p-2">{user.lastname}</td>
@@ -90,11 +106,13 @@ const UserDetails = () => {
         </tbody>
       </table>
       {selected && (
-        <div className="bg-slate-200 inset-0"
-        style={{height:"150px", width:"400px"}}>
+        <div
+          className="bg-slate-200 inset-0"
+          style={{ height: "150px", width: "400px" }}
+        >
           <div>
-          <h1 className="font-bold text-2xl">Are You Sure ?</h1>
-          <p>You won't be able to revert this!</p>
+            <h1 className="font-bold text-2xl">Are You Sure ?</h1>
+            <p>You won't be able to revert this!</p>
           </div>
           <div>
             <button
