@@ -1,20 +1,18 @@
 import React from "react";
-import SignupForm from "./components/SignupForm";
+import SignupForm from "./pages/SignupForm";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import UserDetails from "./components/UserDetails";
-import LoginForm from "./components/LoginForm";
-import EditForm from "./components/EditForm";
-import NewPage from "./pages/NewPage";
+import UserDetails from "./pages/UserDetails";
+import EditForm from "./pages/EditForm";
+import Home from "./pages/Home";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SignupForm />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<SignupForm />} />
         <Route path="/userdetails" element={<UserDetails />} />
-        <Route path="/login" element={<LoginForm />} />
         <Route path="/edit-user/:userId" element={<EditForm />} />
-        <Route path="/newpage" element={<NewPage/>}/>
       </Routes>
     </Router>
   );

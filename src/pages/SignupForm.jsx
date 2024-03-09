@@ -194,12 +194,12 @@ const SignupForm = () => {
               Sign Up
             </button>
 
-            <Link
-              to="/login"
+            <div
+             
               className="p-2 ml-6 mt-3 mb-5 cursor-pointer text-slate-500 hover:text-slate-700"
             >
               Already have account?
-            </Link>
+            </div>
           </div>
         </div>
       </form>

@@ -3,7 +3,7 @@
     {
       "firstname": "Bibek",
       "lastname": "Karki",
-      "email": "bibek@gmail.com",
+      "email": "bibek1@gmail.com",
       "password": "123456",
       "confirmpassword": "123456",
       "id": 8
@@ -41,14 +41,6 @@
       "id": 12
     },
     {
-      "firstname": "Bipin",
-      "lastname": "Gautam",
-      "email": "bipingautam@gmail.com",
-      "password": "hhhhhh",
-      "confirmpassword": "hhhhhh",
-      "id": 13
-    },
-    {
       "firstname": "Yubaraj",
       "lastname": "Sapkota",
       "email": "yubaraj@gmail.com",
@@ -65,11 +57,11 @@
       "id": 15
     },
     {
-      "firstname": "Dinesh",
-      "lastname": "Magar",
-      "email": "dinesh@magar.com",
-      "password": "llllll",
-      "confirmpassword": "llllll",
+      "firstname": "hari",
+      "lastname": "hari",
+      "email": "hari@gmail.com",
+      "password": "harihari",
+      "confirmpassword": "harihari",
       "id": 16
     }
   ]
