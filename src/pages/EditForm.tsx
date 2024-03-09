@@ -30,7 +30,7 @@ const EditForm = () => {
   } = useFormik({
     initialValues: initialValues,
     validationSchema: signUpSchema,
-    onSubmit: (values, action) => {
+    onSubmit: (values:any, action:any) => {
       console.log(values);
       axios
         .put(`http://localhost:8000/users/${params.userId}`, values)

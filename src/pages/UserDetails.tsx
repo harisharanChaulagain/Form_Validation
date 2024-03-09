@@ -1,58 +1,39 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { MdDelete } from "react-icons/md";
 import { BiEdit } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import {
+  useGetAllUserQuery,
+  useDeleteUserMutation,
+} from "../lib/features/userSlice";
 
 const UserDetails = () => {
-  const [userData, setUserData] = useState([]);
-  const [editUserDetails, setEditUserDetails] = useState();
-  const [selected, setSelected] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const { data: userData, isError, isLoading } = useGetAllUserQuery({});
+  const [deleteUser] = useDeleteUserMutation();
 
-  const handleDeleteUser = (userId) => {
-    axios
-      .delete(`http://localhost:8000/users/${userId}`)
-      .then((response) => {
-        console.log(response);
-        const updatedUserData = userData.filter((user) => user.id !== userId);
-        setUserData(updatedUserData);
-        setSelected(null);
-      })
-      .catch((error) => {
-        console.warn(error);
-      });
+  if (isLoading) {
+    return <p>Loading....</p>;
+  }
+
+  if (isError) {
+    return <p>Something went wrong</p>;
+  }
+
+  const handleDelete = async (id: any) => {
+    try {
+      await deleteUser(id);
+    } catch (err) {
+      console.error("Error deleting product:", err);
+    }
   };
 
-  const handleEditUser = (userId) => {
-    setEditUserDetails(userId);
+  const handleEditUser = (userId: any) => {
     window.location.href = `/edit-user/${userId}`;
   };
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/users")
-      .then((response) => {
-        const usersData = response.data;
-        setUserData(usersData);
-      })
-      .catch((error) => {
-        console.warn("Error:", error);
-      });
-  }, []);
-
-  // delete confirm
-  const handleDeleteView = (user) => {
-    setSelected(user.id);
-  };
-
-  // cancel
-  const handleDeleteCancle = () => {
-    setSelected(null);
-  };
-
   // filter data
-  const filteredData = userData.filter((user) =>
+  const filteredData = userData?.filter((user: any) =>
     user.email.toLowerCase().includes(searchQuery.toLowerCase())
   );
   const tableData = searchQuery ? filteredData : userData;
@@ -83,7 +64,7 @@ const UserDetails = () => {
           </tr>
         </thead>
         <tbody>
-          {tableData.map((user) => (
+          {tableData?.map((user: any) => (
             <tr key={user.id}>
               <td className="p-2">{user.firstname}</td>
               <td className="p-2">{user.lastname}</td>
@@ -91,8 +72,7 @@ const UserDetails = () => {
               <td className="flex flex-row gap-3 text-2xl">
                 <MdDelete
                   className="text-red-500 cursor-pointer hover:text-red-600 hover:scale-105"
-                  // onClick={() => handleDeleteUser(user.id)}
-                  onClick={() => handleDeleteView(user)}
+                  onClick={() => handleDelete(user.id)}
                 />
                 <Link to={`/edit-user/${user.id}`}>
                   <BiEdit
@@ -105,33 +85,6 @@ const UserDetails = () => {
           ))}
         </tbody>
       </table>
-      {selected && (
-        <div
-          className="bg-slate-200 inset-0"
-          style={{ height: "150px", width: "400px" }}
-        >
-          <div>
-            <h1 className="font-bold text-2xl">Are You Sure ?</h1>
-            <p>You won't be able to revert this!</p>
-          </div>
-          <div>
-            <button
-              className="font-bold text-white bg-blue-500 p-2 rounded ml-6 mt-3 hover:bg-blue-600"
-              style={{ width: "140px" }}
-              onClick={() => handleDeleteUser(selected)}
-            >
-              Yes, delete it
-            </button>
-            <button
-              className="font-bold text-white bg-red-500 hover:bg-red-600 rounded p-2 mt-3"
-              style={{ width: "140px" }}
-              onClick={handleDeleteCancle}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
